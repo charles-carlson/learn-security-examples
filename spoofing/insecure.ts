@@ -80,7 +80,7 @@ app.post("/register", (req: Request, res: Response) => {
  * This POST endpoint is used to destroy an existing session
  */
 app.post("/forget", (req: Request, res: Response) => {
-  req.session.destroy(err => {
+  req.session.destroy(_err => {
     res.redirect("/");
   });
 });
