@@ -31,5 +31,8 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+insecure.ts does not validate query data during a request, and using direct request user data in the database query.
 2. Briefly explain how a malicious attacker can exploit them.
+the attack could supply a nosql command in the request query that would be executed to retrieve private information of a user. the attacker could exploit the system to retrieve passwords, usernames, various PII information through having the system execute their script commands.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the information disclosure vulnerability?
+Secure.ts uses a sanitizer function to ensure request query is a string, and replaces alphanumeric characters. It also does not directly place the user query into the db query.
