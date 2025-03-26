@@ -31,5 +31,8 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
+insecure.ts does not use a rate limiter for how many requests can be sent, also does not sanitize query data and directly uses req data in the db query.
 2. Briefly explain how a malicious attacker can exploit them.
+The attack can send out any number of requests to the server that are invalid and cause a crash
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
+secure.ts usees a rateLimiter middleware to ensure that the route being requested, cannot be done more than a set number of times and adds a timer for the next time you can send a request. 
